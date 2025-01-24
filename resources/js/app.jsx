@@ -1,6 +1,7 @@
 import "./bootstrap";
 import { createInertiaApp } from "@inertiajs/react";
 import { createRoot } from "react-dom/client";
+import { Toaster } from "react-hot-toast"; // Import Toaster
 import "../css/app.css";
 
 createInertiaApp({
@@ -9,6 +10,11 @@ createInertiaApp({
         return pages[`./Pages/${name}.jsx`];
     },
     setup({ el, App, props }) {
-        createRoot(el).render(<App {...props} />);
+        createRoot(el).render(
+            <>
+                <Toaster position="top-right" reverseOrder={false} />
+                <App {...props} />
+            </>
+        );
     },
 });
